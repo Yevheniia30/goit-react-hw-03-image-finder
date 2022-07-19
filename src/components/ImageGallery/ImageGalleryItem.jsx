@@ -4,7 +4,10 @@ import s from './ImageGallery.module.css';
 export const ImageGalleryItem = ({ item, onClickToOpenModal }) => {
   // console.log('item', item);
   return (
-    <li className={s.ImageGalleryItem} onClick={onClickToOpenModal}>
+    <li
+      className={s.ImageGalleryItem}
+      onClick={() => onClickToOpenModal(item.id)}
+    >
       <img
         className={s.ImageGalleryItem_image}
         src={item?.webformatURL}
