@@ -31,8 +31,6 @@ export class App extends Component {
     ) {
       // console.log('new searrch', prevState, this.state);
       this.getImages();
-    } else {
-      return;
     }
   }
 
