@@ -25,9 +25,14 @@ export class App extends Component {
   // }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchQuery !== this.state.searchQuery) {
+    if (
+      prevState.searchQuery !== this.state.searchQuery ||
+      prevState.page < this.state.page
+    ) {
       // console.log('new searrch', prevState, this.state);
       this.getImages();
+    } else {
+      return;
     }
   }
 
@@ -42,7 +47,7 @@ export class App extends Component {
       // console.log('response', data.hits);
       this.setState(prevState => ({
         images: [...prevState.images, ...data.hits],
-        page: prevState.page + 1,
+        // page: prevState.page + 1,
         total: data.totalHits,
       }));
 
@@ -60,7 +65,10 @@ export class App extends Component {
   };
 
   onSubmit = query => {
-    console.log('query', query);
+    // console.log('query', query);
+    if (query === this.state.searchQuery) {
+      return;
+    }
     this.setState({
       searchQuery: query,
       page: 1,
@@ -69,7 +77,10 @@ export class App extends Component {
   };
 
   onLoadClick = () => {
-    this.getImages();
+    this.setState(prevState => ({
+      page: prevState.page + 1,
+    }));
+    // this.getImages();
   };
 
   onOpenModal = id => {
