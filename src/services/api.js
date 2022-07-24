@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const instance = axios.create({
   baseURL: 'https://pixabay.com/api',
+  params: {
+    image_type: 'photo',
+    orientation: 'horizontal',
+  },
 });
 
 // axios.defaults.baseURL = 'https://pixabay.com/api';
@@ -13,7 +17,7 @@ export const getImagesReq = async ({
   per_page = 12,
 }) => {
   const { data } = await instance.get(
-    `/?q=${searchQuery}&page=${page}&key=${key}&image_type=photo&orientation=horizontal&per_page=${per_page}`
+    `/?q=${searchQuery}&page=${page}&key=${key}&per_page=${per_page}`
   );
   return data;
 };
