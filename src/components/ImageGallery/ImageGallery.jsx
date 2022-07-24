@@ -18,6 +18,7 @@ export const ImageGallery = ({ data, onClickToOpenModal }) => {
 };
 
 ImageGallery.propTypes = {
+  onClickToOpenModal: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

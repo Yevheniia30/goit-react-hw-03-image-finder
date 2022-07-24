@@ -35,7 +35,8 @@ export class Modal extends Component {
     return createPortal(
       <div className={s.Overlay} onClick={this.handleClose}>
         <div className={s.Modal}>
-          <img src={this.props.image} alt={this.props.altImage} />
+          {this.props.children}
+          {/* <img src={this.props.image} alt={this.props.altImage} /> */}
         </div>
       </div>,
       modalRoot
@@ -44,7 +45,8 @@ export class Modal extends Component {
 }
 
 Modal.propTypes = {
-  image: PropTypes.string.isRequired,
-  altImage: PropTypes.string.isRequired,
+  // image: PropTypes.string.isRequired,
+  // altImage: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
